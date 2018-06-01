@@ -3,6 +3,5 @@
   with_items:
     - curl
     - git
-    - python-mysqldb
     - zip
     - unzip
