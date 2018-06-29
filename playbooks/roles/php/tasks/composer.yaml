@@ -1,0 +1,6 @@
+# file: roles/php/tasks/composer.yml
+- name: Install composer
+  shell: curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+- name: Configure composer cache directory to avoid using slow NFS
+  shell: composer config --global cache-dir /dev/shm/composer/cache

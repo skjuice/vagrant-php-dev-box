@@ -1,3 +1,4 @@
+# file: roles/common/tasks/main.yml
 - name: Install required base packages
   apt: name={{ item }} state=present
   with_items:
@@ -5,3 +6,6 @@
     - git
     - zip
     - unzip
+
+- name: Install python-software-properties
+  apt: name=python-software-properties state=present

@@ -2,14 +2,16 @@
 - hosts: all
   become: true
   vars:
-    document_root: /vagrant
-    www_user: vagrant
+    document_root: /vagrant   # variable defined directly in the playbook
+    www_user: vagrant         # another variable defined directly in the playbook
     www_group: vagrant
+  vars_files:
+    - /vars/external_vars.yml # for storing sensitive info out of version control
   pre_tasks:
     - name: update apt cache
       apt: update_cache=yes cache_valid_time=3600
   roles:
-    - base
+    - common
     - nginx
     - mysql
     - php

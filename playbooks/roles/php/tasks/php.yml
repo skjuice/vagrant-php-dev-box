@@ -1,0 +1,22 @@
+# file: roles/php/tasks/php.yml
+- name: Install PHP
+  apt: name=php{{ php_version }} state=present
+
+- name: Install required php packages
+  apt: name={{ item }} state=present
+  with_items:
+    - php{{ php_version }}-mysql
+    - php{{ php_version }}-intl
+    - php{{ php_version }}-cli
+    - php{{ php_version }}-mcrypt
+    - php{{ php_version }}-mbstring
+    - php{{ php_version }}-dom
+    - php{{ php_version }}-gd
+    - php{{ php_version }}-xml
+    - php{{ php_version }}-pdo
+    - php{{ php_version }}-zip
+    - php{{ php_version }}-openssl
+    - php{{ php_version }}-tokenizer
+
+- name: Enable the MCrypt extension
+  shell: phpenmod mcrypt
